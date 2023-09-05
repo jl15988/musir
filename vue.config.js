@@ -6,9 +6,12 @@ module.exports = defineConfig({
   // electron 13 把"build":{}从package.json移除，在vue.config.js里写
   pluginOptions: {
     electronBuilder: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       externals: ['view-ui-plus'],
       customFileProtocol: './',
+      preload: 'src/preload.ts',
+      // Or, for multiple preload files:
+      // preload: { preload: 'src/preload.js', otherPreload: 'src/preload2.js' }
       builderOptions: {
         productName: 'Musir',
         appId: 'com.jl15988.musir',
@@ -65,4 +68,11 @@ module.exports = defineConfig({
       }
     }
   }
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       additionalData: '@use "@/assets/scss/element.scss";'
+  //     }
+  //   }
+  // }
 })

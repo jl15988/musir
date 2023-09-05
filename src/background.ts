@@ -15,14 +15,16 @@ protocol.registerSchemesAsPrivileged([
 ])
 let win: any = null
 
+
 async function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     useContentSize: true,
     width: 1220,
     height: 640,
-    minWidth: 1220,
+    minWidth: 600,
     minHeight: 640,
+    frame: false,
     // transparent: true, // 窗口透明  设置后还原窗口win.restore()无效
     // backgroundColor: '#000', // 背景颜色
     title: 'Musir', // 标题
@@ -36,11 +38,19 @@ async function createWindow () {
       nodeIntegration: process.env
         .ELECTRON_NODE_INTEGRATION as unknown as boolean,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-      preload: './preload.ts' // 预加载
+      preload: path.resolve(__dirname, 'preload.js') // 预加载
     }
   })
 
   win.setMenu(null)
+
+  win.on('maximize', () => {
+    win.webContents.send('max-handle', true)
+  })
+
+  win.on('unmaximize', () => {
+    win.webContents.send('max-handle', false)
+  })
 
   if (process.env.NODE_ENV === 'production') {
     // 正式
@@ -101,3 +111,23 @@ if (isDevelopment) {
     })
   }
 }
+
+// 关闭窗体
+ipcMain.on('close-app', (event) => {
+  win.close()
+})
+
+// 最大化窗体
+ipcMain.on('max-app', (event) => {
+  win.maximize()
+})
+
+// 还原窗体
+ipcMain.on('unmax-app', (event) => {
+  win.unmaximize()
+})
+
+// 最小化窗体
+ipcMain.on('min-app', (event) => {
+  win.minimize()
+})

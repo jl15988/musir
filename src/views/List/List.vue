@@ -1,11 +1,11 @@
 <template>
-  <div>
-    首页
-  </div>
+  <div></div>
 </template>
 
-<script lang="ts" setup>
-
+<script>
+export default {
+  name: 'List'
+}
 </script>
 
 <style scoped>
