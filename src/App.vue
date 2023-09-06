@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-aside class="page-aside" :class="{'collapse': data.collapse}">
-      <header-logo></header-logo>
+      <header-logo :collapse="data.collapse"></header-logo>
       <div class="aside-menu-box">
         <sidebar :collapse="data.collapse"></sidebar>
       </div>
@@ -18,8 +18,7 @@
 </template>
 
 <style lang="scss">
-@use "src/assets/scss/variable";
-@use "src/assets/scss/common";
+@use "assets/scss/index";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

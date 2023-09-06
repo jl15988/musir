@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>收藏</div>
 </template>
 
 <script>

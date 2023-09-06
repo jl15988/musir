@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>本地</div>
 </template>
 
 <script>

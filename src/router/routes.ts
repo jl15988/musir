@@ -2,13 +2,19 @@ import { RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/Home/Home.vue'),
+    path: '',
+    component: () => import('@/components/MainContainer.vue'),
     meta: {
-      title: '首页',
-      icon: 'House'
-    }
+      hide: true
+    },
+    children: [{
+      path: 'home',
+      component: () => import('@/views/Home/Home.vue'),
+      meta: {
+        title: '首页',
+        icon: 'House'
+      }
+    }]
   },
   {
     path: '/myMusic',
@@ -52,7 +58,29 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '我的歌单'
     },
-    children: []
+    children: [{
+      path: 'list',
+      component: () => import('@/views/SongSheet/SongSheet.vue'),
+      meta: {
+        title: '歌单',
+        hide: true
+      }
+    }]
+  },
+  {
+    path: '',
+    component: () => import('@/components/MainContainer.vue'),
+    meta: {
+      hide: true
+    },
+    children: [{
+      path: 'settings',
+      component: () => import('@/views/Settings/Settings.vue'),
+      meta: {
+        title: '设置',
+        icon: 'Setting'
+      }
+    }]
   }
 ]
 

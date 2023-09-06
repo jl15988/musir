@@ -5,7 +5,7 @@
   "author": {
     "name": "jl15988"
   },
-  "main": "./src/background.ts",
+  "main": "background.ts",
   "scripts": {
     "electron:serve": "vue-cli-service electron:serve",
     "electron:build": "vue-cli-service electron:build",
@@ -19,8 +19,12 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "better-sqlite3": "^8.6.0",
+    "btoa": "^1.2.1",
     "core-js": "^3.8.3",
     "element-plus": "^2.3.12",
+    "jsmediatags": "^3.9.7",
+    "lowdb": "^6.0.1",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-cli-plugin-electron-builder": "^2.1.1",
